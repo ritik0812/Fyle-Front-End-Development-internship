@@ -1,0 +1,64 @@
+<div class="grid h-screen grid-cols-1 grid-rows-5 gap-5">
+  <div>
+    <div class="grid grid-cols-8 px-10 py-5">
+      <div class="col-span-2 flex justify-center items-center">
+        <div class="h-full w-full rounded-full bg-white flex items-center justify-center">
+          <div class="h-5/6 w-1/3 bg-gray-200 rounded-full flex items-center justify-center">
+            <img [src]="src" alt="Image" *ngIf="src; else noImg" class="rounded-full">
+            <ng-template #noImg>
+              <span class="text-gray-400">
+                Image
+              </span>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-6 flex justify-start py-3 flex-col gap-3">
+        <span class="font-medium text-2xl">Jhon Doe</span>
+        <span class="font-medium">Bio goes here</span>
+        <div class="flex items-center">
+          <span class="material-icons">location_on</span>
+          <span>
+            Oriando
+          </span>
+        </div>
+        <span>Twitter: https://twitter.com/</span>
+      </div>
+    </div>
+
+    <!-- <div class="flex items-center px-40 ">
+      <span class="material-icons">link</span>
+      <span>
+        : https://twitter.com/
+      </span>
+    </div> -->
+  </div>
+
+
+  <div class="row-start-2 row-end-5 mt-4">
+    <div class="grid grid-cols-2 grid-rows-3 gap-10 px-10">
+      <app-heroes></app-heroes>
+      <app-heroes></app-heroes>
+      <app-heroes></app-heroes>
+      <app-heroes></app-heroes>
+      <app-heroes></app-heroes>
+      <app-heroes></app-heroes>
+    </div>
+  </div>
+
+  <div class="mt-10">
+    <div class="flex justify-center items-center ">
+      <mat-paginator [length]="totalPages" [pageSize]="pageSize" (page)="onPageChange($event)">
+      </mat-paginator>
+    </div>
+
+    <div class="flex justify-center">
+      <span *ngFor="let page of getPageArray()" class="px-4 py-2 mx-1 border border-gray-400 cursor-pointer"
+        [class.bg-blue-500]="page === currentPage" (click)="goToPage(page)">
+        {{ page }}
+      </span>
+    </div>
+
+  </div>
+</div>
